@@ -14,6 +14,7 @@ import Education from "./components/Education"
 import Providers from "./components/Providers"
 import SavingsCalc from "./components/SavingsCalc"
 import NavBar from "./components/Navbar"
+import Home from "./components/Home"
 
 function App() {
   return (
@@ -24,12 +25,17 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/Providers" component = {Providers} />
-          <Route path="/SavingsCalc" component = {SavingsCalc}>
-            <h1>WTF</h1>
-            <SavingsCalc />
+          <Route path = "/"> 
+          <Home />
           </Route>
-          <Route path="/Education" component = {Education}>
+          <Route exact path="/Providers">
+          {/* <Providers/> */}
+          <h1>TEST</h1>
+          </Route>
+          <Route exact path="/SavingsCalc">
+            <SavingsCalc/>
+            </Route>
+          <Route path="/Education">
             <Education />
           </Route>
         </Switch>
