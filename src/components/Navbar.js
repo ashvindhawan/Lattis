@@ -18,8 +18,8 @@ const navbar = () => {
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
       <Link to = "/SavingsCalc">
-        {/* <Nav.Link href = "/SavingsCalc">Upgrade Savings Calculator</Nav.Link> */}
-        <h1>Upgrade Savings Calculator</h1>
+        <Nav.Link as={Link} >Upgrade Savings Calculator</Nav.Link>
+        {/* <h1>Upgrade Savings Calculator</h1> */}
         </Link>
         <Link to = "/Education">
         <Nav.Link href="#Education">Learn about PACE</Nav.Link>
