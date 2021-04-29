@@ -3,12 +3,22 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Form";
 import "./Providers.css";
+import Financier from "./Financier";
 
 const zip_list = [94536, 94544, 94568, 94538, 94541, 94587, 94611, 94577, 94546, 94539, 94566, 94605, 94601, 94610, 94606, 94608,
     94560, 94551, 94578, 94588, 94602, 94607, 94555, 94612, 94609, 94545, 94603, 94619, 94704, 94621, 94580, 95377, 94703, 94706, 
     94702, 94618, 94579, 94705, 95391, 94709, 94707, 94502, 94542, 94552, 94708, 94710, 94604, 94537, 94540, 94662, 94623, 94586, 
     94514, 94701, 94614, 94620, 94557, 94543, 94624, 94661, 94712, 94720, 94617, 94613, 94615, 94622, 94625, 94627, 94643, 94649,
     94659, 94660, 94666]
+
+var upgrades = ["Solar Panels", "Windows", "Water heaters", "HVAC"]
+
+var financiers = {
+    "Ygrene":["Solar Panels", "Windows", "Water heaters", "HVAC"],
+    "Renew Financial":["Solar Panels", "Windows", "Water heaters", "HVAC"],
+    "PaceFunding":["Solar Panels", "Windows", "Water heaters", "HVAC"],
+    "FortiFi":["Solar Panels", "Windows", "Water heaters", "HVAC"]
+    }
 
 class Providers extends React.Component {
 
@@ -74,7 +84,7 @@ class Providers extends React.Component {
 
     handleEvent = event => {
         this.setState({
-            firstName2: this.firstName,
+            firstName2: this.state.firstName,
             firstName: "",
             lastName: "",
             address1: "",
@@ -83,17 +93,35 @@ class Providers extends React.Component {
             theState: "",
             zip: "",
             showResults: true,
-            isCorrectCounty: false,
         })
+        if (zip_list.includes(parseInt(this.state.zip))) {
+            this.setState({
+                isCorrectCounty: true,
+            })
+        }
+       
     }
 
     
     render() {
         if(this.state.showResults) {
-            console.log(this.firstName2)
-            return (
-                <h1>HELLO</h1>
-            )
+            if(this.state.isCorrectCounty) {
+                return (
+                    <div>
+                    <h1>Welcome {this.state.firstName2}. Here are the PACE Financiers in your area.</h1>
+                    <ul>
+                        {Object.entries(financiers).map(([name, upgrades]) => {
+                            return <li><Financier name = {name} upgradeTypes = {upgrades} /></li>
+                        })}
+                    </ul>
+                    </div>
+                )
+            } else {
+                return (
+                    <h1>Sorry, the PACE Provider lookup tool isn't yet ready in your area. Please check back later!</h1>
+                )
+            }
+            
         } else {
             return ( 
                 <div className = "Provider">
