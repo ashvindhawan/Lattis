@@ -16,17 +16,19 @@ const navbar = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Link to="/SavingsCalc">
-              <Nav.Link href = "/SavingsCalc">Upgrade Savings Calculator</Nav.Link>
+              <Nav.Link href = "/SavingsCalc">Savings Calculator</Nav.Link>
             </Link>
             <Link to="/Education">
-              <Nav.Link href="#Education">Learn about PACE</Nav.Link>
+              <Nav.Link href="#Education">Educate</Nav.Link>
             </Link>
-            <Link exact to="/Providers">
-              <Nav.Link href="#Providers">Find PACE Providers</Nav.Link>
+            <Link exact to="/Upgrades">
+              <Nav.Link href="#Providers">Home Upgrades</Nav.Link>
             </Link>
+            <Link to = "/Login">
             <Button href="#" variant="warning" size="lg" disabled>
-              Sign Up{" "}
+              Login
             </Button>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

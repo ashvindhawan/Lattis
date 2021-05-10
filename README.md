@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+Welcome! Here I will indicate everything still in progress. We have built out the front-end architecture for 4 features: Education, Audit, Upgrades, and Calculator. We have implemented the full user journey for Home Upgrades --> Solar Energy --> PACE Financing in Alameda County, but other than that no features are built out on the website itself. However, we have already researched the required APIs and logic behind many of our computations involving user data, including Savings Calculations, Audit Calculation, and Solar Exposure. Thus, we simply have to implement the logic that is already done on paper. We plan on using MongoDB to house any static data as well as account information, and a Django backend. We plan on continuing with the React frontend, though we may transfer to a pre-made CSS template in the near future.

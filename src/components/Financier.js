@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from "react-bootstrap/Button"
+
 
 class Financier extends React.Component {
 
@@ -11,10 +13,14 @@ class Financier extends React.Component {
     }
 
     render() {
+        var items = ""
+        for(const i of this.props.upgradeTypes.values()) {
+            items += i + ", "
+        }
         return (
             <div>
                 <h1>{this.props.name}</h1>
-                <h2>Upgrades Offered: {this.props.upgradeTypes}</h2>
+                <h2>Upgrades Offered: {items}</h2>
             </div>
         )
     }

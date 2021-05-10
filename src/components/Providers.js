@@ -4,21 +4,9 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Form";
 import "./Providers.css";
 import Financier from "./Financier";
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import zip_list from "../data/zipcodes.json"
 
-const zip_list = [94536, 94544, 94568, 94538, 94541, 94587, 94611, 94577, 94546, 94539, 94566, 94605, 94601, 94610, 94606, 94608,
-    94560, 94551, 94578, 94588, 94602, 94607, 94555, 94612, 94609, 94545, 94603, 94619, 94704, 94621, 94580, 95377, 94703, 94706, 
-    94702, 94618, 94579, 94705, 95391, 94709, 94707, 94502, 94542, 94552, 94708, 94710, 94604, 94537, 94540, 94662, 94623, 94586, 
-    94514, 94701, 94614, 94620, 94557, 94543, 94624, 94661, 94712, 94720, 94617, 94613, 94615, 94622, 94625, 94627, 94643, 94649,
-    94659, 94660, 94666]
-
-var upgrades = ["Solar Panels", "Windows", "Water heaters", "HVAC"]
-
-var financiers = {
-    "Ygrene":["Solar Panels", "Windows", "Water heaters", "HVAC"],
-    "Renew Financial":["Solar Panels", "Windows", "Water heaters", "HVAC"],
-    "PaceFunding":["Solar Panels", "Windows", "Water heaters", "HVAC"],
-    "FortiFi":["Solar Panels", "Windows", "Water heaters", "HVAC"]
-    }
 
 class Providers extends React.Component {
 
@@ -39,7 +27,6 @@ class Providers extends React.Component {
     }
 
     handleFirstName = event => {
-        console.log("I AM HERE")
         this.setState({
             firstName: event.target.value
         })
@@ -108,12 +95,25 @@ class Providers extends React.Component {
             if(this.state.isCorrectCounty) {
                 return (
                     <div>
-                    <h1>Welcome {this.state.firstName2}. Here are the PACE Financiers in your area.</h1>
-                    <ul>
-                        {Object.entries(financiers).map(([name, upgrades]) => {
-                            return <li><Financier name = {name} upgradeTypes = {upgrades} /></li>
-                        })}
-                    </ul>
+                    <h1>Welcome {this.state.firstName2}. Here are the financing options available in your area.</h1>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <Button className = "p-5">$0-Down Lease</Button> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <Link to = "/Pace">
+                    <Button className = "p-5">PACE Loan</Button> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    </Link>
+                    <Button className = "p-5">0-Down Loan</Button> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <Button className = "p-5">Cash Purchase</Button> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <br></br>
+                    <br></br>
+                    <h1>Each of the above options will have their own tile, which will display statistics such as monthly payments, net savings, and applicable tax credits</h1>
+                    {/* <h5>Comparing quotes is time-consuming. Let us do it for you.</h5>
+                    <h5>Fill out one approval form and we can compile quotes from all the above providers.</h5>
+                    <Link to = "/Apply">
+                        <Button className = "p-3">Easy Apply Now</Button>
+                    </Link> */}
                     </div>
                 )
             } else {
@@ -125,6 +125,7 @@ class Providers extends React.Component {
         } else {
             return ( 
                 <div className = "Provider">
+                    <h1>Almost there! Enter a few more pieces of information to see quotes.</h1>
                     <Form>
                         <Form.Row>
                             <div className = "w-25 p-3">
@@ -185,6 +186,13 @@ class Providers extends React.Component {
                                 <Form.Check type="checkbox" label="I have at least 10% equity in my home." />
                             </Form.Group>
                         </Form.Row>
+
+                        <Form.Row className = "formLabel">
+                            <Form.Group id="formGridCheckbox">
+                                <Form.Check type="checkbox" label="I have not filed for bankruptcy in the past 5 years." />
+                            </Form.Group>
+                        </Form.Row>
+
                     <Button variant="primary" type="submit" className = "float-left" onClick = {this.handleEvent}>
                         Submit
                     </Button>
